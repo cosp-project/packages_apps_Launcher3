@@ -58,7 +58,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
-import com.android.internal.util.aosip.aosipUtils;
+import com.android.internal.util.cosp.COSPUtils;
 
 import com.android.launcher3.Launcher.LauncherOverlay;
 import com.android.launcher3.LauncherAppWidgetHost.ProviderChangedListener;
@@ -340,28 +340,28 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
             case 0: // Stock
                 break;
             case 1: // Sleep
-                aosipUtils.switchScreenOff(getContext());
+                COSPUtils.switchScreenOff(getContext());
                 break;
             case 2: // Flashlight
-                aosipUtils.toggleCameraFlash();
+                COSPUtils.toggleCameraFlash();
                 break;
             case 3: // Google search
                 launchGoogleSearch(getContext());
                 break;
             case 4: // Volume panel
-                aosipUtils.toggleVolumePanel(getContext());
+                COSPUtils.toggleVolumePanel(getContext());
                 break;
             case 5: // Clear notifications
-                aosipUtils.clearAllNotifications();
+                COSPUtils.clearAllNotifications();
                 break;
             case 6: // Screenshot
-                aosipUtils.takeScreenshot(true);
+                COSPUtils.takeScreenshot(true);
                 break;
             case 7: // Notifications
-                aosipUtils.toggleNotifications();
+                COSPUtils.toggleNotifications();
                 break;
             case 8: // QS panel
-                aosipUtils.toggleQsPanel();
+                COSPUtils.toggleQsPanel();
                 break;
             case 9: // Open drawer
                 launchAllApps();
@@ -3571,7 +3571,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
         launchIntent.setPackage("com.google.android.googlequicksearchbox");
         launchIntent.setClassName("com.google.android.googlequicksearchbox",
                 "com.google.android.googlequicksearchbox.SearchActivity");
-        if (aosipUtils.isPackageInstalled(context,
+        if (COSPUtils.isPackageInstalled(context,
                 "com.google.android.googlequicksearchbox")) {
             context.startActivity(launchIntent);
         } else {
